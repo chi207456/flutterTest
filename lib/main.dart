@@ -13,16 +13,18 @@ import 'package:flutter_app/com/sxgroup/test/platform_channels/PlatformChannelSa
 import 'package:flutter_app/com/sxgroup/test/provide/provideApp.dart';
 import 'package:flutter_app/com/sxgroup/test/screens/catalog.dart';
 import 'package:flutter_app/com/sxgroup/test/screens/login.dart';
-import 'package:flutter_app/com/sxgroup/test/tabbar/TabNavigatorDemo.dart';
+
 import 'package:flutter_app/com/sxgroup/test/tabbar/tabbar_demo.dart';
 import 'package:flutter_app/com/sxgroup/test/test.dart';
 import 'package:provider/provider.dart';
 
 import 'com/sxgroup/test/hero/radio_hero_animation.dart';
 import 'com/sxgroup/test/screens/cart.dart';
+import 'com/sxgroup/trip/navigator/tab_navigator.dart';
+
 
 void main() {
-  runApp(TabNavigatorDemo());
+  runApp(TripApp());
 }
 
 class MyApp extends StatelessWidget {

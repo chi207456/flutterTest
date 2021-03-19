@@ -95,10 +95,10 @@ class _WebViewState extends State<WebView> {
       backButtonColor = Colors.white;
     }
     return Scaffold(
-      appBar: _appBar(
-          Color(int.parse("oxff" + statusBarColorStr)), backButtonColor),
       body: Column(
         children: <Widget>[
+        _appBar(
+            Color(int.parse("0xff" + statusBarColorStr)), backButtonColor),
           Expanded(
               child: WebviewScaffold(
             userAgent: null,

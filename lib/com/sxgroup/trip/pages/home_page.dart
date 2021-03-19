@@ -9,6 +9,7 @@ import 'package:flutter_app/com/sxgroup/trip/mode/home_model.dart';
 import 'package:flutter_app/com/sxgroup/trip/mode/sales_box_model.dart';
 import 'package:flutter_app/com/sxgroup/trip/util/navigator_util.dart';
 import 'package:flutter_app/com/sxgroup/trip/widget/Loading_contaniner.dart';
+import 'package:flutter_app/com/sxgroup/trip/widget/grid_nav.dart';
 import 'package:flutter_app/com/sxgroup/trip/widget/local_nav.dart';
 import 'package:flutter_app/com/sxgroup/trip/widget/webview.dart';
 import 'package:flutter_splash_screen/flutter_splash_screen.dart';
@@ -73,11 +74,12 @@ class _HomePageState extends State<HomePage> {
                       _onScroll(scrollNotification.metrics.pixels);
                     }
                   },
-                  child: _listView,),
+                  child: _listView,
+                ),
               ),
             ),
             _appBar
-          ],
+          ], //
         ),
       ),
     );
@@ -90,7 +92,14 @@ class _HomePageState extends State<HomePage> {
         Padding(
           padding: EdgeInsets.fromLTRB(7, 4, 7, 4),
           child: LocalNav(localNavList: localNavList),
-        )
+        ),
+        Padding(
+          padding: EdgeInsets.fromLTRB(7, 0, 7, 4),
+          child: GridNav(
+            gridNavModel: gridNavModel,
+          ),
+        ),
+
       ],
     );
   }
@@ -103,14 +112,13 @@ class _HomePageState extends State<HomePage> {
               gradient: LinearGradient(
                   colors: [Color(0x66000000), Colors.transparent],
                   begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter)
-          ),
+                  end: Alignment.bottomCenter)),
           child: Container(
             padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
             height: 80,
             decoration: BoxDecoration(
-              color: Color.fromARGB((appBarAlpha * 255).toInt(), 255, 255, 255)
-            ),
+                color:
+                Color.fromARGB((appBarAlpha * 255).toInt(), 255, 255, 255)),
             child: Text(SEARCH_BAR_DEFAUT_TXT),
           ),
         )
@@ -123,6 +131,10 @@ class _HomePageState extends State<HomePage> {
       HomeModel model = await HomeDao.fetch();
       setState(() {
         localNavList = model.localNavList;
+        subNavList = model.subNavList;
+        gridNavModel = model.gridNav;
+        bannerNavList = model.bannerList;
+        _loading = false;
       });
     } catch (e) {
       print(e);
